@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Christ the Consoler Church Website">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christ the Consoler</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    }
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation Bar */
+    nav {
+      width: 100%;
+      background-color: #6F9C60;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      flex: 0 0 auto;
+      margin-right: 2rem;
+    }
+
+    .logo img {
+      height: 80px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+      justify-content: flex-start;
+      align-items: center;
+      flex: 1;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      white-space: nowrap;
+    }
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #fdb813;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    nav ul li a:hover {
+      color: #fdb813;
+    }
+
+    /* Global Section Heading */
+    h2 {
+      color: #116113;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #6F9C60;
+      border-radius: 2px;
+    }
+    h3 {
+      color: #116113;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    p {
+      color: #444;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+    }
+    .quote {
+      font-style: italic;
+      color: #555;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      border-left: 4px solid #6F9C60;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+    }
+    .quote-author {
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 6rem 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* HOME Section (Hero) */
+    #home {
+      background: url('home.png') no-repeat center center;
+      background-size: cover;
+      color: #fff;
+      padding-top: 80px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+    }
+    #home::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(111,156,96,0.2), rgba(17,97,19,0.2));
+      z-index: 1;
+    }
+    #home h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      position: relative;
+      z-index: 2;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    #home p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      position: relative;
+      z-index: 2;
+      line-height: 1.8;
+      margin: 0 auto;
+      padding: 0 1rem;
+      color: #fff;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* OUR STORY Section */
+    #our-story {
+      background-color: #fff;
+      padding: 3rem 2rem;
+      text-align: left;
+      max-width: 1200px;
+      margin: 0 auto;
+      scroll-margin-top: 85px;
+    }
+    #our-story h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    #our-story h3 {
+      font-size: 1.8rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    #our-story p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .story-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .left-image, .right-image {
+      flex: 0 0 auto;
+    }
+    .left-image img, .right-image img {
+      width: 300px;
+      height: auto;
+    }
+    .text-block {
+      flex: 1;
+      padding: 0 1rem;
+    }
+
+    /* Memorial Church Block */
+    .memorial-block {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .memorial-block .left-image img {
+      width: 400px;
+      height: auto;
+    }
+    .memorial-block .text-block .quote {
+      font-style: italic;
+    }
+    .memorial-block .text-block .quote-author {
+      font-size: 0.8em;
+    }
+
+    /* Architect William Block – Two-column layout */
+    .architect-block {
+      display: flex;
+      gap: 10px;
+      margin: 1rem 0;
+    }
+    .architect-block .left-col {
+      flex: 0 0 auto;
+    }
+    .architect-block .left-col img {
+      width: 250px;
+      height: auto;
+    }
+    .architect-block .right-col {
+      flex: 1;
+      position: relative;
+      padding-left: 10px;
+      padding-bottom: 300px; /* Reserve space for the internal image */
+    }
+    .architect-block .right-col .text-block {
+      font-size: 1em;
+      margin: 0;
+      padding: 0;
+    }
+    .architect-block .right-col .image-block {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    .architect-block .right-col .image-block img {
+      width: 500px;
+      height: auto;
+      display: block;
+    }
+
+    /* VISIT US Section */
+    #visit-us {
+      background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('overview-visitus.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 4rem 2rem;
+      width: 100%;
+      scroll-margin-top: 85px;
+      text-align: center;
+    }
+    .visit-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .visit-container h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+    .visit-section {
+      margin-bottom: 1.5rem;
+    }
+    .visit-section h2 {
+      font-size: 2rem;
+      border-bottom: 2px solid #116113;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .visit-section p {
+      font-size: 1.1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+    }
+    .visit-container a {
+      color: #116113;
+      text-decoration: none;
+    }
+    .visit-container a:hover {
+      text-decoration: underline;
+    }
+
+    /* PROJECT 150 Section changed to image, no text below title */
+    #project-150 {
+      width: 100%;
+      min-height: 100vh;
+      scroll-margin-top: 85px;
+      background: url('Project150.png') no-repeat center center;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    #project-150 h2 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    /* EVENTS Section */
+    #events {
+      background-color: #fff;
+      padding: 4rem 2rem;
+      width: 100%;
+      text-align: center;
+      scroll-margin-top: 85px;
+    }
+    .events-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #events h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      color: #116113;
+    }
+    .events-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .event-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      flex: 1 1 300px;
+      max-width: 300px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #6F9C60;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .event-card:hover::before {
+      transform: scaleX(1);
+    }
+    .event-image {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .event-image img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .event-card:hover .event-image img {
+      transform: scale(1.05);
+    }
+    .event-info h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #116113;
+      margin: 0.5rem 0;
+    }
+    .event-info p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+    }
+    .buy-now-button {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #6F9C60;
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-align: center;
+      border: 2px solid transparent;
+    }
+    .buy-now-button:hover {
+      background-color: transparent;
+      color: #6F9C60;
+      border-color: #6F9C60;
+      transform: translateY(-2px);
+    }
+
+    /* SERVICES Section */
+    #services {
+      background-color: #fff;
+      text-align: center;
+      padding: 4rem 2rem;
+      width: 100%;
+      scroll-margin-top: 85px;
+    }
+    .services-container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #services h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      color: #116113;
+    }
+    .services-subsection {
+      margin-bottom: 3rem;
+      text-align: left;
+      width: 100%;
+    }
+    .services-subsection h3 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #116113;
+      border-bottom: 2px solid #116113;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    /* Monthly Services Row */
+    .monthly-services-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+    .monthly-services-wrapper .left-col {
+      flex: 0 0 250px;
+      max-width: 250px;
+    }
+    .monthly-services-wrapper .left-col img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .monthly-services-text {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    /* Annual Services: 3-card row layout like events */
+    .annual-services-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .annual-service {
+      flex: 1 1 350px;
+      max-width: 350px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .annual-service img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .annual-service h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #116113;
+    }
+    .annual-service p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .wedding-credit {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: #777;
+      text-align: center;
+    }
+
+    /* CELEBRATE Section */
+    #celebrate {
+      background-color: #f0f0f0;
+      padding: 4rem 2rem;
+      width: 100%;
+      text-align: center;
+      scroll-margin-top: 85px;
+    }
+    .celebrate-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #celebrate h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      color: #116113;
+    }
+    .celebrate-quote {
+      font-size: 1.8rem;
+      font-style: italic;
+      margin: 1rem auto 2rem;
+      max-width: 800px;
+      color: #555;
+    }
+    .celebrate-intro {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      color: #333;
+    }
+    .celebrate-services-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .celebrate-service {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+    }
+    .service-content {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .service-image {
+      flex: 0 0 300px;
+    }
+    .service-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .service-text {
+      flex: 1;
+    }
+    .service-text h3 {
+      color: #116113;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .service-text p {
+      margin-bottom: 1rem;
+    }
+
+    /* CONTACT Section with background contactback.png */
+    #contact {
+      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('contactback.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: left;
+      scroll-margin-top: 85px;
+      padding: 4rem 2rem;
+      width: 100%;
+    }
+    .contact-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #contact h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: #116113;
+    }
+    .contact-info {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .contact-info p {
+      margin-bottom: 1rem;
+    }
+    .contact-info a {
+      color: #116113;
+      text-decoration: none;
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #6F9C60;
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .social-links a:hover {
+      color: #fdb813;
+    }
+    .social-links a span {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    footer p {
+      color: #fff;
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.5rem 1rem;
+      }
+
+      .logo {
+        margin-right: 1rem;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1001;
+        margin-left: auto;
+      }
+
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #6F9C60;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul.active {
+        display: flex;
+        transform: translateY(0);
+      }
+
+      nav ul li a {
+        font-size: 1.3rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        text-align: center;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      nav ul.active li a {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .logo img {
+        height: 60px;
+      }
+
+      /* Fix Our Story section layout */
+      .story-row,
+      .memorial-block,
+      .architect-block {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .story-row .left-image,
+      .memorial-block .left-image,
+      .architect-block .left-col {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .story-row .left-image img,
+      .memorial-block .left-image img,
+      .architect-block .left-col img {
+        width: 100%;
+        height: auto;
+      }
+
+      .story-row .text-block,
+      .memorial-block .text-block,
+      .architect-block .right-col {
+        width: 100%;
+        padding: 1rem;
+        text-align: left;
+      }
+
+      .architect-block .right-col {
+        padding-bottom: 0;
+      }
+
+      .architect-block .right-col .image-block {
+        position: relative;
+        margin-top: 2rem;
+      }
+
+      .architect-block .right-col .image-block img {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      /* Fix text formatting */
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .quote-author {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+      }
+
+      /* Fix section padding */
+      section {
+        padding: 4rem 1rem;
+        min-height: auto;
+      }
+
+      #our-story {
+        padding: 2rem 1rem;
+      }
+
+      /* Fix container widths */
+      .events-container,
+      .services-container,
+      .celebrate-container,
+      .contact-container,
+      .visit-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+
+      .annual-service {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Update hamburger animation */
+    .hamburger {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 2px 0;
+        transition: 0.3s;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+    }
+
+    /* Add divider line style */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(111,156,96,0.2), transparent);
+      margin: 2rem 0;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="logo">
+      <a href="#home">
+        <img src="logo2.png" alt="Christ the Consoler Logo">
+      </a>
+    </div>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul>
+      <li><a href="#our-story">OUR STORY</a></li>
+      <li><a href="#visit-us">VISIT US</a></li>
+      <li><a href="#project-150">PROJECT 150</a></li>
+      <li><a href="#events">EVENTS</a></li>
+      <li><a href="#services">SERVICES</a></li>
+      <li><a href="#celebrate">CELEBRATE</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- HOME Section -->
+  <section id="home">
+    <h1>Christ the Consoler</h1>
+    <p>Welcome to Christ the Consoler. Experience our legacy of faith, community, and inspiration.</p>
+  </section>
+
+  <!-- OUR STORY Section -->
+  <section id="our-story">
+    <h2>Our Story</h2>
+    <h3>The Greek Tragedy</h3>
+    <p>
+      On Sunday 10th April 1870, three English tourists of distinction, Lord and Lady Muncaster and their 23-year-old friend, Frederick Vyner set off from Athens to visit the battlefield of Marathon. They were accompanied by Edward Herbert, who was secretary to the English Minister in Athens, a young Piedmontese nobleman Count Alberto de Boyl, and an English barrister, Edward Lloyd.
+    </p>
+    <p>
+      Despite being accompanied by mounted gendarmes, as well as the route having been pre-patrolled by soldiers, the danger of the brigands was ever present. Romilly Jenkins' account (1961), titled 'The Dilessi Murders' (published 1961) provides both an interesting insight into the politics of the newly constituted Greece of the 19th century, and how this day trip turned into a major international incident.
+    </p>
+    <div class="story-row">
+      <div class="left-image">
+        <img src="Dilessi.png" alt="Dilessi">
+      </div>
+      <div class="text-block">
+        <p>
+          Frederick Vyner was the youngest son of Colonel Henry Vyner and his wife Lady Mary. His brother-in-law was Earl de Grey and Ripon who served in Liberal governments for both Palmerston and Gladstone from 1859 onwards. At the time of these events, he was the Lord President of the Council. In addition, Herbert's cousin, fourth Earl of Carnarvon, was the Minister for Colonies. Lord Muncaster himself, whilst only 36 years old, was a highly respected and decorated veteran from the Crimea.
+        </p>
+        <p>
+          There is no doubt the kidnap of this group reached the highest level of both government and the royal family. However, Prime Minister Gladstone was a leading voice in the censure of Palmerston's intervention in a previous Greek crisis twenty years prior, and was a committed non-interventionist when it came to a fledgling new democracy. Whether it was misfortune of time and place, a plot by the Greek opposition, or incompetence on the ground, the group once captured were increasingly in danger.
+        </p>
+        <p>
+          The ransom was raised but the brigands' demands inflated with each negotiation. Impatience led to a military push; the brigand code meant the hostages were executed as soldiers bore down on them. The nation was stunned, and when the bodies of Frederick Vyner and Edward Herbert arrived in Southampton, there was a respectful procession as muffled bells tolled. Along with Christ the Consoler, there are a number of monuments, including in York Minster and Ripon Cathedral.
+        </p>
+      </div>
+    </div>
+    <p><strong>The Memorial Church – Christ the Consoler</strong></p>
+    <div class="memorial-block">
+      <div class="left-image">
+        <img src="church-ourstory.png" alt="Church Our Story">
+      </div>
+      <div class="text-block">
+        <p class="quote">
+          <em>The architect was a man of genius, the London-based William Burges (1827-81), whose exquisite church of Christ the Consoler, Skelton-on-Ure, Yorkshire (1870-6), is perhaps his most perfect creation, and one that can bring the strongest of men to their knees.</em>
+        </p>
+        <p class="quote-author" style="font-size:0.8em;">
+          Professor James Stevens Curl, Member of the Royal Irish Academy, is the author of numerous works on architecture, including English Victorian Churches: Architecture, Faith, &amp; Revival
+        </p>
+        <p>
+          The grieving mother and sister chose to mark Frederick's death by building two magnificent churches. Christ the Consoler was built on the edge of Lady Mary's estate, Newby Hall near Ripon in North Yorkshire. Even to this day, this is the only church with this dedication, and as the name suggests, it was built as a memorial and a parish church by a grieving mother.
+        </p>
+      </div>
+    </div>
+    <div class="architect-block">
+      <div class="left-col">
+        <img src="stained-ourstory.png" alt="Stained Our Story" style="width:250px;">
+      </div>
+      <div class="right-col" style="position: relative; padding-left: 10px; padding-bottom: 300px;">
+        <div class="text-block" style="font-size:1em; margin:0; padding:0;">
+          <p>
+            The architect William Burges (1827-1881) was known to the family, which included Lord Bute for whom he had built Cardiff Castle and Castell Coch in South Wales. He was commissioned, and the foundation stone was laid on 17th May 1871. Not only was Burges one of this period's foremost architects, in Christ the Consoler he delivered a building as unique as its name and befitting such a commission. His builder was J Thompson of Peterborough, and the clerk of works was Sier of London, who had worked with him on the Cathedral in Cork.
+          </p>
+          <p>
+            Sitting on the edge of the Newby Estate and the small estate village of Skelton on Ure, this was no ordinary Parish Church. It is rightly considered as one of the finest examples of Victorian ecclesiastical design, and Burges engaged the very best craftsmen when it came to delivering the detail to which he was very particular.
+          </p>
+        </div>
+        <div class="image-block" style="position: absolute; bottom: 0; right: 0;">
+          <img src="internal-ourstory.png" alt="Internal Our Story" style="width:500px; display:block;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT US Section -->
+  <section id="visit-us">
+    <div class="visit-container">
+      <h1>VISIT US</h1>
+      <div class="visit-section">
+        <h2>Disabled Access</h2>
+        <p>There are two steps into the Church. Please contact us if you require assistance or disabled ramps. Note there is also a step from the nave to the chancel.</p>
+      </div>
+      <div class="visit-section">
+        <h2>Toilets</h2>
+        <p>Toilets are not available on site except during our events.</p>
+      </div>
+      <div class="visit-section">
+        <h2>Finding Us</h2>
+        <p>Finding us is very straightforward.</p>
+      </div>
+      <div class="visit-section">
+        <h2>By Car</h2>
+        <p>
+          Follow the signs to Newby Hall. Drive through the main gates until you see the Church on your right. Take the first right off the main drive and head toward the Church. On arrival, park on the grass verges near the church if the ground is firm. In wetter weather, please park in the village of Skelton on Ure and enjoy a short, scenic walk through Church Wood.
+        </p>
+      </div>
+      <div class="visit-section">
+        <h2>By Bus</h2>
+        <p>
+          East Yorkshire Bus routes 82 or 84 run from either York or Ripon, stepping off at Skelton on Ure Reading Room. Turn left from the Reading Room until you see the entrance to Church Wood on your right. Please check return bus times in advance.
+        </p>
+      </div>
+      <div class="visit-section">
+        <h2>Other Things to Do</h2>
+        <p>
+          <strong>Newby Hall &amp; Gardens:</strong> Located on the edge of one of North Yorkshire's finest attractions, Newby Hall is open between the end of March and the end of September. A visit to Christ the Consoler pairs wonderfully with a tour of Newby Hall. See <a href="http://www.newbyhall.com" target="_blank">www.newbyhall.com</a> for more details.
+        </p>
+        <p>
+          <strong>Black Lion:</strong> This community‐owned pub in our village is currently operating as a café (Friday–Sunday, 10am–2pm) serving the finest cakes, refreshments, and homemade soups. A full pub re‐opening is scheduled for Spring/Summer 2025.
+        </p>
+        <p>
+          <strong>Ripon:</strong> A short drive away, Ripon's 1350‐year‐old Cathedral is well worth a visit.
+        </p>
+        <p>
+          <strong>Fountains Abbey and St Mary's Church, Studley:</strong> This National Trust &amp; English Heritage World Heritage Site is also nearby. You can combine a visit here with seeing our sister church St Mary's, perched atop the Studley estate. Another William Burges masterpiece, please check the National Trust for opening times.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT 150 Section - now an image with no text beneath the title -->
+  <section id="project-150">
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- EVENTS Section -->
+  <section id="events">
+    <div class="events-container">
+      <h2>Events</h2>
+      <div class="events-grid">
+        <!-- Event Card 1 -> york.png -->
+        <div class="event-card">
+          <div class="event-image">
+            <img src="york.png" alt="Event 2 Picture">
+          </div>
+          <div class="event-info">
+            <h3>Saturday 7th June 2025, 7.30pm</h3>
+            <p>
+              We are joined by the York Male Philharmonic Voice Choir, celebrating their 100th anniversary this year. This concert also forms part of the Churches Conservation Trust's 'Celebrate Your Church Week'.
+            </p>
+            <a href="https://guestli.st/795711" target="_blank" class="buy-now-button">Buy Now</a>
+          </div>
+        </div>
+        <!-- Event Card 2 -> nick.png -->
+        <div class="event-card">
+          <div class="event-image">
+            <img src="nick.png" alt="Event 3 Picture">
+          </div>
+          <div class="event-info">
+            <h3>Saturday 19th July 2025, 7.30pm</h3>
+            <p>
+              We are delighted to welcome back, for the third year running, the amazing Canzona String Quartet formed by the nationally acclaimed former leader of the Northern Chamber Orchestra, Nicholas Ward.
+            </p>
+            <a href="https://guestli.st/799914" target="_blank" class="buy-now-button">Buy Now</a>
+          </div>
+        </div>
+        <!-- Event Card 3 -> P+P.png -->
+        <div class="event-card">
+          <div class="event-image">
+            <img src="P+P.png" alt="Pride and Prejudice Event">
+          </div>
+          <div class="event-info">
+            <h3>Thursday 11th September 2025, 7pm</h3>
+            <p>
+              Following the huge success of our Christmas theatre, we are delighted to welcome This Is My theatre to perform Jane Austen's <em>Pride &amp; Prejudice</em>. A late summer theatre treat.
+            </p>
+            <a href="https://www.tickettailor.com/events/cuemarketing/1525835" target="_blank" class="buy-now-button">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SERVICES Section -->
+  <section id="services">
+    <div class="services-container">
+      <h2>Services</h2>
+
+      <!-- Monthly Services -->
+      <div class="services-subsection">
+        <h3>Monthly Services</h3>
+        <div class="monthly-services-wrapper">
+          <div class="monthly-services-text">
+            <p>
+              Every month we hold a short service of Compline in the chancel. A gentle way to close the day, providing a peaceful opportunity for reflection in our beautiful surroundings—an oasis of calm in a busy world.
+            </p>
+            <p>
+              In 2025, Compline services will be held on the following Wednesdays at 6pm:
+              19th February (weather permitting), 19th March, 23rd April, 18th June, 23rd July, 20th August, 24th September, 22nd October, and 19th November.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Annual Services (3 side by side) -->
+      <div class="services-subsection">
+        <h3>Annual Services</h3>
+        <p>
+          We are fortunate to be supported by our local church St Helen's in Skelton on Ure. Together we host major services on the church calendar, attracting people from all over the area. Whether you live in the village or are visiting, you're welcome to join us. Our services are first come, first seated, accommodating nearly 300 people. We typically have a retiring collection supporting the upkeep of Christ the Consoler and St Helen's Church.
+        </p>
+        <div class="annual-services-wrapper">
+          <div class="annual-service">
+            <img src="evensong.png" alt="Choral Evensong">
+            <p class="event-date">Choral Evensong led by the Choir of St. Columba's Church, Topcliffe - Thursday 22nd May 2025, 6pm followed by refreshments</p>
+          </div>
+          <div class="annual-service">
+            <img src="HF.png" alt="Harvest Festival">
+            <p class="event-date">Celebration of Farming (Harvest Festival), Sunday 5th October 2025, 10.00am</p>
+          </div>
+          <div class="annual-service">
+            <img src="Carols.png" alt="Festival of Carols">
+            <p class="event-date">Festival of Carols, Sunday 14th December 2025, 4.30pm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CELEBRATE Section -->
+  <section id="celebrate">
+    <div class="celebrate-container">
+      <h2>Celebrate</h2>
+      <blockquote class="celebrate-quote">
+        "There are few places more beautiful than the Church of Christ the Consoler, which helped to make this moment surrounded by family and friends that little bit extra special."
+      </blockquote>
+      <p class="celebrate-intro">
+        Christ the Consoler remains consecrated, allowing us to offer a range of services to mark special milestones. These are offered with the support of local clergy, and we can accommodate up to 280 guests. For your post-service celebration, Newby Hall &amp; Gardens and the newly refurbished Black Lion pub are excellent options. We're happy to connect you with them.
+      </p>
+
+      <div class="annual-services-wrapper">
+        <!-- Baptism Card -->
+        <div class="annual-service">
+          <img src="Baptism.png" alt="Baptism Service">
+          <h3>Baptism</h3>
+          <p>
+            One of the architectural gems of the church is the baptism font, which forms the center of your baptism service. Whether you desire a private service or to be part of a typical Sunday service, we can accommodate from a small family group to 150 guests.
+          </p>
+          <p>
+            Get in touch via <a href="mailto:hello@christtheconsoler.com">hello@christtheconsoler.com</a>.
+          </p>
+      </div>
+
+        <!-- Wedding Card -->
+        <div class="annual-service">
+          <img src="wedding.png" alt="Wedding Service">
+          <h3>Wedding</h3>
+          <p>
+            Nestled in the parkland of Newby Hall Estate, our church is a breathtaking setting for a marriage celebration. Since we're no longer an 'open' church, the simplest service is a wedding blessing (requiring a separate legal service). For a full wedding service, a special licence from the Archbishop of Canterbury is needed. We also host non-religious services and vow renewals.
+          </p>
+          <p>
+            Please email us at <a href="mailto:hello@christtheconsoler.com">hello@christtheconsoler.com</a> for more information.
+          </p>
+          <p class="wedding-credit">Photo credit: Laura Calderwood Photography</p>
+      </div>
+
+        <!-- Funeral Card -->
+        <div class="annual-service">
+          <img src="funeral.png" alt="Funeral Service">
+          <h3>Funeral</h3>
+          <p>
+            Christ the Consoler is a truly unique dedication. Built in memory of a lost son, the central Rose window offers solace to those saying a final farewell. We provide a tranquil space for a respectful gathering to celebrate a life well lived.
+          </p>
+          <p>
+            We can connect you with a local funeral director to plan the service. Contact us at <a href="mailto:hello@christtheconsoler.com">hello@christtheconsoler.com</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT Section -->
+  <section id="contact">
+    <div class="contact-container">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <p>
+          Friends of Christ the Consoler is a charity run by volunteers. We will always try to reply to messages as soon as possible.
+        </p>
+        <p>
+          <strong>Email:</strong> <a href="mailto:hello@christtheconsoler.com">hello@christtheconsoler.com</a>
+        </p>
+        <p>
+          <strong>Address:</strong> Friends of Christ the Consoler, c/o Estate Office, Newby Hall, Ripon HG4 5AJ
+        </p>
+        <p>
+          Join our email mailing list by dropping us an email. We'll keep you updated on our news and special offers.
+        </p>
+        <p>
+          You can also find us on <a href="https://www.facebook.com/profile.php?id=61552032989523" target="_blank">Facebook</a> and <a href="https://www.instagram.com/christtheconsolor" target="_blank">Instagram</a> – make sure you like and follow us.
+        </p>
+        <p>
+          For information on our charity, visit <a href="http://www.charitycommission.gov.uk" target="_blank">www.charitycommission.gov.uk</a> and search for charity no. 1207736.
+        </p>
+        <p>
+          For information on the Churches Conservation Trust, please visit <a href="http://www.visitchurches.org.uk" target="_blank">www.visitchurches.org.uk</a>.
+        </p>
+        <p>
+          For information on Newby Hall &amp; Gardens, please visit <a href="http://www.newbyhall.com" target="_blank">www.newbyhall.com</a>.
+        </p>
+        <p>
+          For information on the Black Lion in Skelton on Ure, please visit <a href="http://www.skeltonblacklion.com" target="_blank">www.skeltonblacklion.com</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61552032989523" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+        <a href="https://www.instagram.com/christtheconsoler/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+        <a href="https://www.newbyhall.com" target="_blank" aria-label="Newby Hall"><i class="fas fa-home"></i><span>Newby Hall</span></a>
+        <a href="https://www.visitchurches.org.uk" target="_blank" aria-label="Churches Conservation Trust"><i class="fas fa-church"></i><span>CCT</span></a>
+      </div>
+    <p>&copy; 2025 Christ the Consoler. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Add JavaScript for hamburger menu -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('nav ul');
+
+      if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          hamburger.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+          link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+          });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+/*
+Theme Name: Christ the Consoler
+Theme URI: https://christtheconsoler.com
+Author: Your Name
+Author URI: https://christtheconsoler.com
+Description: A custom theme for Christ the Consoler Church
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: christ-the-consoler
+*/
+
+/* Import your existing styles */
+@import url('css/main.css'); 
